@@ -18,6 +18,8 @@ __Supported exchanges__
 1. Download the binary
 2. Run `chmod +x orderbooks`
 3. Copy the file in a _$PATH_ directory (eg. `/usr/bin`)
+4. [Customize configuration](#Config file)
+5. Copy config in `/opt/configs/ob_config.json`
 
 ### From source
 1. Clone the repo
@@ -28,14 +30,7 @@ __Supported exchanges__
    
    `go get ./...`
 
-3. Customize configuration
-   
-   Copy `config.json` and edit it according to your needs:
-   - `pairs`: pairs to scrape (if an exchange doesn't support a pair it is ignored for that specific exchange with a warning on startup)
-   - `snapshot_interval`: interval between full snapshots (in seconds)
-   - `storage_path`: where snapshot and events file are saved
-   - `exchanges`: exchanges to scrape 
-   - `save_Events`: save events files
+3. [Customize configuration](#Config file)
 
 4. _(optional)_ Install systemd service (tested on Ubuntu 18.04)
    ```bash
@@ -44,7 +39,14 @@ __Supported exchanges__
    ```
    ⚠️ **Systemd service is enabled on startup by default**
    
+### Config file
 
+Copy `config.json` and edit it according to your needs:
+- `pairs`: pairs to scrape (if an exchange doesn't support a pair it is ignored for that specific exchange with a warning on startup)
+- `snapshot_interval`: interval between full snapshots (in seconds)
+- `storage_path`: where snapshot and events file are saved
+- `exchanges`: exchanges to scrape
+- `save_Events`: save events files
 
 ## Usage
 
