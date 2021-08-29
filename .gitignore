@@ -1,0 +1,5 @@
+/data/snapshots/
+/storage/snapshots/
+/config_*.json
+/orderbooks
+/storage/
