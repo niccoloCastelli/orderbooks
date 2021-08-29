@@ -1,0 +1,33 @@
+# orderbooks | Orderbooks downloader
+# orderbooks systemd service
+# sudo systemctl [status|start|stop] orderbooks
+
+
+[Unit]
+Description=Orderbooks downloader
+ConditionPathExists= /usr/bin/orderbooks
+After=network.target
+
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+LimitNOFILE=1024
+Restart=on-failure
+RestartSec=10
+
+
+WorkingDirectory=/opt
+ExecStart=/usr/bin/orderbooks --config /opt/configs/ob_config.json run
+
+# make sure log directory exists and owned by syslog
+ExecStartPre=/bin/mkdir -p /var/log/orderbooks
+ExecStartPre=/bin/chown ubuntu:adm /var/log/orderbooks
+ExecStartPre=/bin/chmod 755 /var/log/orderbooks
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=orderbooks
+
+[Install]
+WantedBy=multi-user.target

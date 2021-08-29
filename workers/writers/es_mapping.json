@@ -1,0 +1,131 @@
+{
+  "settings":{
+  },
+  "mappings": {
+    "properties": {
+      "0": {
+        "type": "float"
+      },
+      "1": {
+        "type": "float"
+      },
+      "10": {
+        "type": "float"
+      },
+      "11": {
+        "type": "float"
+      },
+      "12": {
+        "type": "float"
+      },
+      "13": {
+        "type": "float"
+      },
+      "14": {
+        "type": "float"
+      },
+      "15": {
+        "type": "float"
+      },
+      "16": {
+        "type": "float"
+      },
+      "17": {
+        "type": "float"
+      },
+      "18": {
+        "type": "float"
+      },
+      "19": {
+        "type": "float"
+      },
+      "2": {
+        "type": "float"
+      },
+      "20": {
+        "type": "float"
+      },
+      "21": {
+        "type": "float"
+      },
+      "22": {
+        "type": "float"
+      },
+      "23": {
+        "type": "float"
+      },
+      "24": {
+        "type": "float"
+      },
+      "25": {
+        "type": "float"
+      },
+      "26": {
+        "type": "float"
+      },
+      "27": {
+        "type": "float"
+      },
+      "28": {
+        "type": "float"
+      },
+      "29": {
+        "type": "float"
+      },
+      "3": {
+        "type": "float"
+      },
+      "30": {
+        "type": "float"
+      },
+      "31": {
+        "type": "float"
+      },
+      "32": {
+        "type": "float"
+      },
+      "33": {
+        "type": "float"
+      },
+      "34": {
+        "type": "float"
+      },
+      "35": {
+        "type": "float"
+      },
+      "36": {
+        "type": "float"
+      },
+      "37": {
+        "type": "float"
+      },
+      "38": {
+        "type": "float"
+      },
+      "39": {
+        "type": "float"
+      },
+      "4": {
+        "type": "float"
+      },
+      "5": {
+        "type": "float"
+      },
+      "6": {
+        "type": "float"
+      },
+      "7": {
+        "type": "float"
+      },
+      "8": {
+        "type": "float"
+      },
+      "9": {
+        "type": "float"
+      },
+      "ts": {
+        "type": "date"
+      }
+    }
+  }
+}

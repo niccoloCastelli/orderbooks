@@ -1,0 +1,13 @@
+{
+  "pairs": ["BTC-USD", "BTC-USDT", "BTC-EUR", "ETH-USD", "LTC-USD", "BCH-USD", "XRP-USD", "ETH-BTC"],
+  "snapshot_interval": 30,
+  "storage_path": "./storage",
+  "exchanges": [
+    "coinbase",
+    "bitstamp",
+    "kraken",
+    "okex",
+    "bitmex"
+  ],
+  "save_Events": true
+}

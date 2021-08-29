@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package orderbooks;
+
+import "google/protobuf/timestamp.proto";
+
+service OrderBooks {
+
+    // List available exchanges
+    rpc GetExchanges (EmptyMsg) returns (GetExchangesResponseMsg) {
+
+    }
+
+    // Query LOB events stored in files
+    rpc QueryEvents (EventsQueryMsg) returns (stream SnapshotMsg) {
+
+    }
+
+    // Open a channel to stream LOB events in real time
+    rpc GetLiveData (EventsQueryMsg) returns (stream SnapshotMsg) {
+
+    }
+
+    // Open a channel to stream LOB snapshots
+    rpc GetCachedData (EventsQueryMsg) returns (stream SnapshotMsg) {
+
+    }
+}
+
+message EmptyMsg {
+
+}
+message GetExchangesResponseMsg {
+    uint32 count = 1;
+    repeated ExchangeMsg exchanges = 2;
+}
+message ExchangeMsg {
+    string id = 1;
+    string name = 2;
+    google.protobuf.Timestamp date_start = 3;
+    google.protobuf.Timestamp date_end = 4;
+    repeated PairMsg pairs = 5;
+}
+message PairMsg {
+    string base = 1;
+    string quote = 2;
+    google.protobuf.Timestamp date_start = 3;
+    google.protobuf.Timestamp date_end = 4;
+}
+
+message EventsQueryMsg {
+    string exchange = 1;
+    google.protobuf.Timestamp date_start = 2;
+    google.protobuf.Timestamp date_end = 3;
+    string pair = 4;
+    oneof snapshot_interval {
+        string interval = 5;
+        int64 ticks = 7;
+    }
+    int64 snapshot_size = 6;
+}
+
+enum SnapshotMode {
+    TIME = 0;
+    TICKS = 1;
+}
+enum OrderSide {
+    BID = 0;
+    ASK = 1;
+}
+enum EventType {
+    INIT = 0;
+    ADD = 1;
+    CHANGE = 2;
+    REMOVE = 3;
+}
+
+message SnapshotMsg {
+    google.protobuf.Timestamp timestamp = 1;
+    string exchange = 2;
+    string pair = 3;
+    repeated Event orders = 4;
+    repeated Event events = 5;
+    int64 session_id = 6;
+    int64 counter = 7;
+}
+message Event {
+    int64 timestamp = 1;
+    OrderSide order_side = 2;
+    float amount = 3;
+    float price = 4;
+    EventType event_type = 5;
+}

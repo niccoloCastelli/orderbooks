@@ -42,9 +42,21 @@ __Supported exchanges__
 ## Usage
 
 ### Run scraper
+Run order books scraper and keep save data in csv files.
+
 `orderbooks run --log_level 1 --config your_config_file.json`
 
 ⚠️**Uncompressed files for all the exchanges and supported pairs may take more than 5GB a day, use the builtin `compress` command to save 80% space**
+
+
+#### Storage format
+
+- `[FILE_TYPE]` (events|snapshots)
+  - exchange
+    - year
+      - month
+        - day
+          - `[PAIR].csv`
 
 ### Compress files
 
@@ -66,8 +78,8 @@ Remove old stored files up to today-n day (default n = 5)
 `orderbooks clean [n]`
 
 
-### Elasticsearch
-Upload stored data to elasticsearch
+### Upload to Elasticsearch
+Upload data stored in files to elasticsearch
 
 `orderbooks to_elasticsearch --storage_path [STORAGE_PATH] --interval=10 --snapshot_mode=1 [PAIR] [EXCHANGE] [FROM_DATE] [TO_DATE]`
 
@@ -80,20 +92,25 @@ Optional parameters:
 - `--interval`
 - `--snapshot_mode`
 
+### Live feed
 
-### NATS live stream
-
-Publish real time snapshots on a NATS channel
+Publish real time snapshots on a NATS channel and optionally save snapshots to elasticsearch
 
 `data_feed --interval 1 [PAIR] [EXCHANGE]`
 
-
 ### gRPC server
 
-Run a grpc server to query stored files and/or stream live data (see `server/proto/orderbooks.proto` for available endpoints and API docs)
+Run a grpc server to query stored files and/or stream live data (check `server/proto/orderbooks.proto` for available endpoints and API docs)
 
 `orderbooks server --storage_path [STORAGE_PATH]`
 
 
 ## Contributing
 
+The project was meant as a learning project, so it is not regularly maintained but any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
