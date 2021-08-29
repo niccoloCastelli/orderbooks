@@ -13,6 +13,13 @@ __Supported exchanges__
 
 
 ## Installation
+
+### From binary
+1. Download the binary
+2. Run `chmod +x orderbooks`
+3. Copy the file in a _$PATH_ directory (eg. `/usr/bin`)
+
+### From source
 1. Clone the repo
    
    `git clone ...`
