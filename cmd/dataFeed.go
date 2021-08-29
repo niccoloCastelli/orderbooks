@@ -139,8 +139,8 @@ func init() {
 	rootCmd.AddCommand(dataFeedCmd)
 	dataFeedCmd.PersistentFlags().Int64Var(&interval, "interval", 10, "Snapshot interval")
 	dataFeedCmd.PersistentFlags().IntVar(&snapshotMode, "snapshot_mode", 1, "Snapshot mode (0=time 1=ticks)")
-	dataFeedCmd.PersistentFlags().IntVar(&depth, "depth", 10, "Numero livelli order book (10 = 10 bids + 10 asks)")
-	dataFeedCmd.PersistentFlags().BoolVar(&saveFeed, "save", false, "Salva feed su elasticsearch")
+	dataFeedCmd.PersistentFlags().IntVar(&depth, "depth", 10, "Order book levels to stream (10 = 10 bids + 10 asks)")
+	dataFeedCmd.PersistentFlags().BoolVar(&saveFeed, "save", false, "Save feed on elasticsearch")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command

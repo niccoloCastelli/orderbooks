@@ -61,9 +61,6 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "config.json", "config file (default is ./config.json)")
 	rootCmd.PersistentFlags().Int8Var(&logLevel, "log_level", int8(zerolog.InfoLevel), "-1(trace)... 5(panic)")
 
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.

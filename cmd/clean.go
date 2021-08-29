@@ -33,8 +33,8 @@ const dateLayout = "2006/01/02"
 // cleanCmd represents the clean command
 var cleanCmd = &cobra.Command{
 	Use:   "clean",
-	Short: "Pulizia storage",
-	Long:  `Pulizia storage eccetto ultimi n giorni (default 5)`,
+	Short: "Remove old files",
+	Long:  `Remove all files before today-n day (default 5)`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var err error
 		logger := log.With().Str("cmd", "clean").Logger()

@@ -76,8 +76,8 @@ func initReconstructionCmd() {
 	// reconstructionCmd represents the reconstruction command
 	var reconstructionCmd = &cobra.Command{
 		Use:   "generate_snapshot",
-		Short: "Generazione snapshot da eventi  (cryptotick)",
-		Long:  `Generazione snapshot a partire da eventi file su CSV. Per convertire file multipli generate_snapshot [PATH (data snapshot)] [FILENAME]`,
+		Short: "Generate snapshots from cryptotick event files",
+		Long:  `Generate a snapshot from cryptotick CSV event files. generate_snapshot [PATH (data snapshot)] [FILENAME_1 FILENAME_2 ...FILENAME_n]`,
 		Run: func(cmd *cobra.Command, args []string) {
 			var (
 				logger = log.With().Str("cmd", "generate_snapshot").Str("out_path", conf.OutPath).Logger()
@@ -113,15 +113,15 @@ func initReconstructionCmd() {
 		},
 	}
 
-	reconstructionCmd.PersistentFlags().StringVar(&dateUntilStr, "date_until", "", "Ricostruzione basata su cambiamenti di prezzo (1 snapshot a ogni cambiamento prezzo L1)")
-	reconstructionCmd.PersistentFlags().BoolVar(&conf.PriceTicks, "price_ticks", false, "Ricostruzione basata su cambiamenti di prezzo (1 snapshot a ogni cambiamento prezzo L1)")
-	reconstructionCmd.PersistentFlags().IntVar(&conf.MaxSnapshotSize, "max_snapshot_size", 1000, "numero massimo di ordini per snapshot (per side, default: 1000)")
-	reconstructionCmd.PersistentFlags().IntVar(&conf.NumWorkers, "num_workers", 8, "numero worker per bulk mode (default: 8)")
-	reconstructionCmd.PersistentFlags().StringVar(&conf.OutPath, "out_path", "./storage", "path snapshot generati (--out_path /my/storage/path)")
-	reconstructionCmd.PersistentFlags().StringVar(&conf.ExchangeName, "exchange_name", "cryptotick", "nome exchange (--exchange_name bitstamp)")
-	reconstructionCmd.PersistentFlags().StringVar(&conf.TimeOffsetLayout, "time_offset_layout", timeOffsetDefaultLayout, "Layout data offset tempo (--time_offset_layout 2006-01-02T15:04:05Z0700)")
-	reconstructionCmd.PersistentFlags().StringVar(&conf.TimeOffsetStr, "time_offset", "", "Tempo offset snapshot (--time_offset 2019-12-30T00:00:00)")
-	reconstructionCmd.PersistentFlags().DurationVar(&conf.SnapshotInterval, "interval", time.Second*30, "30s")
+	reconstructionCmd.PersistentFlags().StringVar(&dateUntilStr, "date_until", "", "Generate snapshots until this date (leave empty to generate snapshots until end of files)")
+	reconstructionCmd.PersistentFlags().BoolVar(&conf.PriceTicks, "price_ticks", false, "Generate snapshots every [interval] price changes")
+	reconstructionCmd.PersistentFlags().IntVar(&conf.MaxSnapshotSize, "max_snapshot_size", 1000, "Max orders per snapshot (per side, default: 1000)")
+	reconstructionCmd.PersistentFlags().IntVar(&conf.NumWorkers, "num_workers", 8, "Worker processes (default: 8)")
+	reconstructionCmd.PersistentFlags().StringVar(&conf.OutPath, "out_path", "./storage", "Generated snapthots path (--out_path /my/storage/path)")
+	reconstructionCmd.PersistentFlags().StringVar(&conf.ExchangeName, "exchange_name", "cryptotick", "Exchange name (--exchange_name bitstamp)")
+	reconstructionCmd.PersistentFlags().StringVar(&conf.TimeOffsetStr, "time_offset", "", "Offset time from first shapshot (--time_offset 2019-12-30T00:00:00)")
+	reconstructionCmd.PersistentFlags().StringVar(&conf.TimeOffsetLayout, "time_offset_layout", timeOffsetDefaultLayout, "Time offset date layout (--time_offset_layout 2006-01-02T15:04:05Z0700)")
+	reconstructionCmd.PersistentFlags().DurationVar(&conf.SnapshotInterval, "interval", time.Second*30, "30s for time ticks, ")
 	rootCmd.AddCommand(reconstructionCmd)
 }
 

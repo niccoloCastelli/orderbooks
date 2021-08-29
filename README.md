@@ -41,6 +41,9 @@ __Supported exchanges__
 
 ## Usage
 
+### Help
+Run `orderbooks --help` for command list and `orderbooks [COMMAND] --help` for detailed command help
+
 ### Run scraper
 Run order books scraper and keep save data in csv files.
 

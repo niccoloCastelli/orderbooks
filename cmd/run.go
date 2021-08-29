@@ -34,8 +34,8 @@ import (
 // runCmd represents the run command
 var runCmd = &cobra.Command{
 	Use:   "run",
-	Short: "Avvia il download degli order books",
-	Long:  `Avvia il download degli order books`,
+	Short: "Start order books scraper",
+	Long:  `Start order books scraper`,
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx, cancelCtx := context.WithCancel(context.Background())
 		snapshotChan := make(chan common.Snapshot, 1024)

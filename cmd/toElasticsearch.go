@@ -108,8 +108,8 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&storagePath, "storage_path", "./storage", "Path storage")
 	toElasticsearchCmd.PersistentFlags().Int64Var(&interval, "interval", 10, "Snapshot interval")
 	toElasticsearchCmd.PersistentFlags().IntVar(&snapshotMode, "snapshot_mode", 1, "Snapshot mode (0=time 1=ticks)")
-	toElasticsearchCmd.PersistentFlags().IntVar(&depth, "depth", 10, "Numero livelli order book (10 = 10 bids + 10 asks)")
-	toElasticsearchCmd.PersistentFlags().StringVar(&esIndexPrefix, "prefix", "", "Prefisso indice elasticsearch")
+	toElasticsearchCmd.PersistentFlags().IntVar(&depth, "depth", 10, "Order book levels to save (10 = 10 bids + 10 asks)")
+	toElasticsearchCmd.PersistentFlags().StringVar(&esIndexPrefix, "prefix", "", "Elasticsearch index prefix")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
